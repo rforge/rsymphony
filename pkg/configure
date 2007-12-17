@@ -1,0 +1,4 @@
+#! /bin/sh
+## For the time being, this is a simple shell script ...
+
+cd src/SYMPHONY && ./configure --enable-static --disable-shared

@@ -1,0 +1,13 @@
+## SYMPHONY_LIB_PATH = $(SYMPHONY_HOME)/lib
+SYMPHONY_LIBS = -lSym -lCgl -lOsiClp -lClp -lOsi -lCoinUtils
+
+PKG_CPPFLAGS = -ISYMPHONY/include
+## PKG_LIBS = -L$(SYMPHONY_LIB_PATH) $(SYMPHONY_LIBS) \
+##   -Wl,-rpath,$(SYMPHONY_LIB_PATH)
+PKG_LIBS = -LSYMPHONY/lib $(SYMPHONY_LIBS)
+
+all: SYMPHONY.ts $(SHLIB)
+
+SYMPHONY.ts:
+	@(cd SYMPHONY && make && make install)
+	touch $@

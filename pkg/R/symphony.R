@@ -1,4 +1,4 @@
-Rsymphony_solve <-
+Rsymphony_solve_LP<-
 function(obj, mat, dir, rhs, int = NULL, max = FALSE, bounds = NULL)
 {
   ## direction of optimization
@@ -16,8 +16,7 @@ function(obj, mat, dir, rhs, int = NULL, max = FALSE, bounds = NULL)
     stop("'dir' must be either '<', '<=', '>', '>=', '==' or '='!")
   
   ## bounding support with using Rglpk bounds for the time being ...
-  if(is.null(bounds))
-    bounds <- list()
+  bounds <- as.list(bounds)
   bounds <- glp_bounds(bounds, nc)
 
   ## use machine's max double values for infinities for the time being ...

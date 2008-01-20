@@ -4,7 +4,7 @@
 
 ## where to put source files and headers
 URL="http://www.coin-or.org/download/source/SYMPHONY/"
-latest="SYMPHONY-5.1.6.tgz"
+latest="SYMPHONY-5.1.7.tgz"
 DESTINATION=../src/SYMPHONY
 
 ## --------------------------------------------

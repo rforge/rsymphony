@@ -1,27 +1,28 @@
 Rsymphony_solve_LP<-
 function(obj, mat, dir, rhs, int = NULL, max = FALSE, bounds = NULL)
 {
-  ## direction of optimization
-  if(!is.logical(max))
-    stop("'max' can be either TRUE or FALSE")
+  ## Direction of optimization.
+  if(!identical(max, TRUE) && !identical(max, FALSE))
+    stop("'Argument 'max' must be either TRUE or FALSE.")
+  
   nr <- nrow(mat)
   nc <- ncol(mat)
 
-  ## Handle directions of constraints: add some error checking
-  ## eventually ...
+  ## Handle directions of constraints.
   TABLE <- c("L", "L", "E", "E", "G", "G")
   names(TABLE) <- c('<', '<=', "==", "=", ">", ">=")
   row_sense <- TABLE[dir]
   if(any(is.na(row_sense)))
-    stop("'dir' must be either '<', '<=', '>', '>=', '==' or '='!")
+    stop("Argument 'dir' must be one of '<', '<=', '>', '>=', '==' or '=!'.")
   
-  ## bounding support with using Rglpk bounds for the time being ...
-  bounds <- as.list(bounds)
-  bounds <- glp_bounds(bounds, nc)
-
-  ## use machine's max double values for infinities for the time being ...
-  col_lb <- replace(bounds[,2], bounds[,2]==-Inf, -.Machine$double.xmax)
-  col_ub <- replace(bounds[,3], bounds[,3]==Inf, .Machine$double.xmax)
+  ## Bounding support with using Rglpk bounds for the time being.
+  bounds <- glp_bounds(as.list(bounds), nc)
+  ## Use machine's max double values for infinities for the time being
+  ## (as SYMPHONY does not know about IEEE 754 or C99 infinities).
+  col_lb <-
+      replace(bounds[, 2L], bounds[, 2L] == -Inf, -.Machine$double.xmax)
+  col_ub <-
+      replace(bounds[, 3L], bounds[, 3L] == Inf, .Machine$double.xmax)
   
   ## Note that the integer spec passed on is a vector of integer
   ## indicators.

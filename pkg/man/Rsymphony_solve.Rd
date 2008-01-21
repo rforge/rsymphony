@@ -59,7 +59,7 @@ Rsymphony_solve_LP(obj, mat, dir, rhs, int = NULL,
 ## subject to: 3 x_1 + 4 x_2 + 2 x_3 <= 60
 ##             2 x_1 +   x_2 +   x_3 <= 40
 ##               x_1 + 3 x_2 + 2 x_3 <= 80
-##               x_1, x_2, x_3 are positive real numbers
+##               x_1, x_2, x_3 are non-negative real numbers
 
 obj <- c(2, 4, 3)
 mat <- matrix(c(3, 2, 1, 4, 1, 3, 2, 2, 2), nrow = 3)
@@ -74,8 +74,8 @@ Rglpk_solve_LP(obj, mat, dir, rhs, max = max)
 ## subject to:-1 x_1 + 2 x_2 +   x_3 <= 4
 ##                     4 x_2 - 3 x_3 <= 2
 ##               x_1 - 3 x_2 + 2 x_3 <= 3
-##               x_1, x_3 are positive integers
-##               x_2 is a positive real number
+##               x_1, x_3 are non-negative integers
+##               x_2 is a non-negative real number
 
 obj <- c(3, 1, 3)
 mat <- matrix(c(-1, 0, 1, 2, 4, -3, 1, -3, 2), nrow = 3)
@@ -86,7 +86,7 @@ max <- TRUE
 
 Rglpk_solve_LP(obj, mat, dir, rhs, int, max)
 
-## same as before but with additional bounds
+## same as before but with bounds replaced by
 ## -Inf <  x_1 <= 4
 ##    0 <= x_2 <= 100
 ##    2 <= x_3 <  Inf

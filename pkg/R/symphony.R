@@ -28,9 +28,9 @@ function(obj, mat, dir, rhs, int = NULL, max = FALSE, bounds = NULL)
   ## indicators.
   if(is.null(int))
     int <- logical(nc)
-  else if(is.integer(int))
+  else if(is.numeric(int))
     int <- ifelse(seq_len(nc) %in% int, TRUE, FALSE)
-  else stop("'int' must be a vector of integer indicators") 
+  else stop("Argument 'int' must be a vector of numeric indices.") 
 
   mat <- make_csc_matrix(mat)
   

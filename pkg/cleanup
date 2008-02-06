@@ -4,5 +4,5 @@
     make distclean || true
     make distclean SUBDIRS= || true
   fi)
-rm -f config.* autom4te.cache src/SYMPHONY.ts
+rm -f config.* autom4te.cache src/SYMPHONY.ts src/Makevars
 exit 0

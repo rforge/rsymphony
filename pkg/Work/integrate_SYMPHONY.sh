@@ -1,6 +1,6 @@
 ## Usage integrate_SYMPHONY.sh [SYMPHONY.tgz]
-## Integrates the latest GLPK package
-## theussl, 2007-12-18
+## Integrates the latest SYMPHONY sources
+## theussl, 2008-12-18
 
 ## where to put source files and headers
 URL="http://www.coin-or.org/download/source/SYMPHONY/"

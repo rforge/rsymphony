@@ -55,6 +55,10 @@ function(obj, mat, dir, rhs, bounds = NULL, types = NULL, max = FALSE)
               objval = double(1L),
               solution = double(nc),
               status = integer(1L))
+
+    ## Ensure that integer variables are really integer:
+    solution <- out$solution
+    solution[int] <- round(solution[int])
     
     status_db <- 
         c("TM_NO_PROBLEM" = 225L,
@@ -78,8 +82,8 @@ function(obj, mat, dir, rhs, bounds = NULL, types = NULL, max = FALSE)
     else
         status_db[match(out$status, status_db)]
     
-    list(solution = out$solution,
-         objval = sum(obj * out$solution),
+    list(solution = solution,
+         objval = sum(obj * solution),
          ## Equivalently,
          ##   if(max) - out$objval else out$objval
          status = status)

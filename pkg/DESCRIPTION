@@ -1,6 +1,6 @@
 Package: Rsymphony
-Version: 0.1-4
-Date: 2008-03-04
+Version: 0.1-5
+Date: 2008-06-05
 Title: Symphony in R
 Author: Reinhard Harter, Kurt Hornik and Stefan Theussl
 Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>

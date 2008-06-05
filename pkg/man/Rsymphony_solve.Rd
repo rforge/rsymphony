@@ -6,8 +6,8 @@
   well as mixed integer linear programming problems (MILPs).
 }
 \usage{
-Rsymphony_solve_LP(obj, mat, dir, rhs, int = NULL,
-                   max = FALSE, bounds = NULL)
+Rsymphony_solve_LP(obj, mat, dir, rhs, bounds = NULL, types = NULL,
+                   max = FALSE)
 }
 \arguments{
   \item{obj}{a vector with the objective coefficients}
@@ -16,15 +16,17 @@ Rsymphony_solve_LP(obj, mat, dir, rhs, int = NULL,
     Each element must be one of \code{"<"}, \code{"<="}, \code{">"},
     \code{">="}, \code{"=="} or \code{"!="}.}
   \item{rhs}{the right hand side of the constraints}
-  \item{int}{a vector with indices representing which objective
-    coefficients should be of type integer.}
-  \item{max}{a logical giving the direction of the optimization.
-    \code{TRUE} means that the objective is to maximize the objective
-    function, \code{FALSE} (default) means to minimize it.}
   \item{bounds}{\code{NULL} (default) or a list with elements
     \code{upper} and \code{lower} containing the indices and
     corresponding bounds of the objective variables.  The default for
     each variable is a bound between 0 and \code{Inf}.}
+  \item{types}{a character vector giving the types of the objective
+    variables, with \code{"C"}, \code{"I"}, and \code{"B"} corresponding
+    to continuous, integer, and binary, respectively, or \code{NULL}
+    (default), taken as all-continuous.  Recycled as needed.}
+  \item{max}{a logical giving the direction of the optimization.
+    \code{TRUE} means that the objective is to maximize the objective
+    function, \code{FALSE} (default) means to minimize it.}
 }
 \details{
   SYMPHONY is an open source solver for solving mixed integer linear
@@ -81,10 +83,10 @@ obj <- c(3, 1, 3)
 mat <- matrix(c(-1, 0, 1, 2, 4, -3, 1, -3, 2), nrow = 3)
 dir <- c("<=", "<=", "<=")
 rhs <- c(4, 2, 3)
-int <- c(1, 3)
 max <- TRUE
+types <- c("I", "C", "I")
 
-Rsymphony_solve_LP(obj, mat, dir, rhs, int, max)
+Rsymphony_solve_LP(obj, mat, dir, rhs, types = types, max = max)
 
 ## Same as before but with bounds replaced by
 ## -Inf <  x_1 <= 4
@@ -94,6 +96,7 @@ Rsymphony_solve_LP(obj, mat, dir, rhs, int, max)
 bounds <- list(lower = list(ind = c(1L, 3L), val = c(-Inf, 2)),
                upper = list(ind = c(1L, 2L), val = c(4, 100)))
 
-Rsymphony_solve_LP(obj, mat, dir, rhs, int, max, bounds)
+Rsymphony_solve_LP(obj, mat, dir, rhs, types = types, max = max,
+                   bounds = bounds)
 }
 \keyword{optimize}

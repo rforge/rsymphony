@@ -29,7 +29,11 @@ function(x)
     if(!inherits(x, "simple_triplet_matrix"))
         stop("Argument 'x' must be of class 'simple_triplet_matrix'.")
 
-    list(matbeg = c(0L, cumsum(tabulate(x$j, x$ncol))),
-         matind = x$i - 1L,
-         values = x$v)
+    ## The matrix method assumes that indices for non-zero entries are
+    ## in row-major order, but the simple_triplet_matrix() constructor
+    ## currently does not canonicalize accordingly ...
+    ind <- order(x$j, x$i)
+    list(matbeg = c(0L, cumsum(tabulate(x$j[ind], x$ncol))),
+         matind = x$i[ind] - 1L,
+         values = x$v[ind])
 }

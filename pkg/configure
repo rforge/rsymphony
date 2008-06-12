@@ -17,7 +17,7 @@ SYMPHONY_LIBS="-lSym -lCgl -lOsiClp -lClp -lOsi -lCoinUtils"
 rm -f conftest.*
 
 cat > conftest.cc <<EOF
-#include <symphony.h>
+#include <coin/symphony.h>
 extern "C"
 int
 main ()
@@ -45,7 +45,7 @@ else
         --disable-cplex-libcheck --disable-glpk-libcheck \
         --disable-osl-libcheck --disable-soplex-libcheck \
         --disable-xpress-libcheck)
-    SYMPHONY_INCLUDE_PATH="-ISYMPHONY/include"
+    SYMPHONY_INCLUDE_PATH="-ISYMPHONY/include/coin"
     SYMPHONY_LIB_PATH="-LSYMPHONY/lib"
     SYMPHONY_TS="SYMPHONY.ts"
 fi

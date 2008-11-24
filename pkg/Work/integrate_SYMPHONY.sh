@@ -1,10 +1,10 @@
 ## Usage integrate_SYMPHONY.sh [SYMPHONY.tgz]
 ## Integrates the latest SYMPHONY sources
-## theussl, 2008-12-18
+## theussl, 2008-11-23
 
 ## where to put source files and headers
 URL="http://www.coin-or.org/download/source/SYMPHONY/"
-latest="SYMPHONY-5.1.8.tgz"
+latest="SYMPHONY-5.1.10.tgz"
 DESTINATION=../src/SYMPHONY
 
 ## --------------------------------------------

@@ -25,16 +25,18 @@ function(obj, mat, dir, rhs, bounds = NULL, types = NULL, max = FALSE)
         replace(bounds[, 3L], bounds[, 3L] == Inf, .Machine$double.xmax)
   
     ## Note that the integer spec passed on is a vector of integer
-    ## indicators, and that SYMPHONY has no support for *binary*
-    ## variables.
+    ## indicators, and that SYMPHONY has no native support for *binary*
+    ## variables, so we pass treat these as integers <= 1.
     int <- if(is.null(types))
         logical(nc)
     else {
         if(!is.character(types) || !all(types %in% c("C", "I", "B")))
             stop("Invalid 'types' argument.")
-        rep(types, length.out = nc) != "C"
+        types <- rep(types, length.out = nc)
+        col_ub[types == "B"] <- 1
+        types != "C"
     }
-    
+
     mat <- make_csc_matrix(mat)
   
     ## Call the C interface.

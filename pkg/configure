@@ -28,7 +28,7 @@ main ()
 }
 EOF
 
-"${R_HOME}/bin/R" CMD SHLIB conftest.cc ${SYMPHONY_LIBS} 2>&1 >/dev/null
+"${R_HOME}/bin/R" CMD SHLIB conftest.cc ${SYMPHONY_LIBS} >/dev/null 2>&1
 status=${?}
 
 rm -f conftest.*

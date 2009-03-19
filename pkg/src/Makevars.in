@@ -6,8 +6,8 @@ PKG_LIBS = @SYMPHONY_LIB_PATH@ $(SYMPHONY_LIBS) $(LAPACK_LIBS) \
 
 .PHONY: all @SYMPHONY_TS@
 
-all: @SYMPHONY_TS@ $(SHLIB)
-$(SHLIB): @SYMPHONY_TS@
+all: $(SHLIB)
+$(OBJECTS): @SYMPHONY_TS@ 
 
 SYMPHONY.ts:
 	@(cd SYMPHONY && make && make install)

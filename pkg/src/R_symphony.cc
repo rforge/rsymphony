@@ -63,6 +63,5 @@ void R_symphony_solve(int *n_cols, int *n_rows, int *start, int *index,
    *solve_status = sym_get_status(env);
 
    sym_close_environment(env);
-};
-
+}
 }

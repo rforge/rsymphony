@@ -9,8 +9,8 @@
 
 /*-------------------------------------------------------------------------*/
 
-#include "symphony.h"
-#include "R.h"	
+#include <coin/symphony.h>
+#include <R.h>
 
 extern "C" {
 

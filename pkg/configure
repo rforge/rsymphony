@@ -53,7 +53,7 @@ else
 	CXXCPP="`${R} CMD config CXXCPP`" \
 	F77="`${R} CMD config F77`" \
 	FLIBS="`${R} CMD config FLIBS`")
-    SYMPHONY_INCLUDE_PATH="-ISYMPHONY/include/coin"
+    SYMPHONY_INCLUDE_PATH="-ISYMPHONY/include"
     SYMPHONY_LIB_PATH="-LSYMPHONY/lib"
     SYMPHONY_TS="SYMPHONY.ts"
 fi

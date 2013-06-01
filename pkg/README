@@ -1,0 +1,9 @@
+PACKAGE UPDATE PROCEDURE
+
+if a new version of SYMPHONY is to be included:
+
+1) go to src directory
+2) run 'svn propedit svn:externals .'
+3) change external SVN URL to cover the new release
+4) run 'svn up'
+5) build package as usual

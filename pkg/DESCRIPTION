@@ -13,4 +13,5 @@ Depends: R (>= 2.6.0)
 Enhances: slam
 SystemRequirements: SYMPHONY for Windows (sources included for other OSes)
 URL: http://R-Forge.R-project.org/projects/rsymphony,
-  http://www.coin-or.org/SYMPHONY/
+  https://projects.coin-or.org/SYMPHONY,
+  http://www.coin-or.org/download/source/SYMPHONY/

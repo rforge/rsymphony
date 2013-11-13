@@ -1,13 +1,14 @@
 Package: Rsymphony
-Version: 0.1-16
-Date: 2013-05-31
+Version: 0.1-17
 Title: Symphony in R
 Description: An R interface to the SYMPHONY MILP solver. The package code links to the local SYMPHONY installation. 
 	     If no installation is found by the configure script, version 5.4.7 will be installed from the included SYMPHONY sources.
 Authors@R: c(person("Reinhard", "Harter", role = "aut"),
              person("Kurt", "Hornik", role = c("aut", "cre"),
                     email = "Kurt.Hornik@R-project.org"),
-             person("Stefan", "Theussl", role = "aut"))
+             person("Stefan", "Theussl", role = "aut"),
+             person("Cyrille", "Szymanski", role = "ctb",
+                    email = "cnszym@gmail.com"))
 License: EPL
 Depends: R (>= 2.6.0)
 Enhances: slam

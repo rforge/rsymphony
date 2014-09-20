@@ -15,8 +15,13 @@ R="${R_HOME}/bin/R"
 
 SYMPHONY_CPPFLAGS=`pkg-config --cflags SYMPHONY >/dev/null 2>&1`
 SYMPHONY_LIBS=`pkg-config --libs SYMPHONY >/dev/null 2>&1`
-
-test -z "${SYMPHONY_LIBS}" && SYMPHONY_LIBS="-lSym -lCgl -lOsiClp -lClp -lOsi -lCoinUtils"
+## As of 2014-09-20, Debian testing/unstable has symphony.pc.
+test -z "${SYMPHONY_CPPFLAGS}" && \
+  SYMPHONY_CPPFLAGS=`pkg-config --cflags symphony >/dev/null 2>&1`
+test -z "${SYMPHONY_LIBS}" && \
+  SYMPHONY_LIBS=`pkg-config --libs symphony >/dev/null 2>&1`
+test -z "${SYMPHONY_LIBS}" && \
+  SYMPHONY_LIBS="-lSym -lCgl -lOsiClp -lClp -lOsi -lCoinUtils"
 
 ## Test whether we can compile and link a minimal program.
 rm -f conftest.*

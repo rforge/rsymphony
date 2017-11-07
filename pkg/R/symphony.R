@@ -14,6 +14,8 @@ function(obj, mat, dir, rhs, bounds = NULL, types = NULL, max = FALSE,
         dir <- character()
     if(missing(rhs) || is.null(rhs))
         rhs <- numeric()
+    if((length(dim(mat)) != 2L) && is.numeric(mat))
+        mat <- matrix(c(mat), nrow = 1L)
     
     nr <- nrow(mat)
     nc <- ncol(mat)

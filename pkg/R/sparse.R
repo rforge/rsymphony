@@ -17,7 +17,7 @@ function(x)
     if(!is.matrix(x))
         stop("Argument 'x' must be a matrix.")
    
-    ind <- which(x != 0, arr.ind = TRUE)
+    ind <- which(x != 0, arr.ind = TRUE, useNames = FALSE)
     if(!length(ind)) {
         ## As of 2016-08-29, the above gives integer(0) instead of a
         ## matrix in case x has zero rows or cols, because x != 0 drops

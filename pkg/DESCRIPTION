@@ -4,7 +4,8 @@ Title: SYMPHONY in R
 Description: An R interface to the SYMPHONY solver for mixed-integer linear programs.
 Authors@R: c(person("Reinhard", "Harter", role = "aut"),
              person("Kurt", "Hornik", role = c("aut", "cre"),
-                    email = "Kurt.Hornik@R-project.org"),
+                    email = "Kurt.Hornik@R-project.org",
+                    comment = c(ORCID = "0000-0003-4198-9911")),
              person("Stefan", "Theussl", role = "aut"),
              person("Cyrille", "Szymanski", role = "ctb",
                     email = "cnszym@gmail.com"),
